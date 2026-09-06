@@ -50,6 +50,50 @@ dotnet build
 dotnet run
 ```
 
+NuGet packages:
+* CommunityToolkit.Mvvm
+* Microsoft.Extensions.DependencyInjection
+
+Do not set StartupUri in App.xaml. The window is created in App.OnStartup and assigned a MainViewModel from DI.
+
+## How to Use
+1. Fill in Criteria. Watch the query preview; that string is what GitHub receives.
+2. Paste a personal access token if you have one.
+3. Click Start monitoring. The first poll seeds seen IDs (no toast flood) unless Toast on first poll too is checked.
+4. New repositories appear under New matches and as toasts.
+5. Double-click a row or click the toast to open the repository.
+6. Poll once runs a single search immediately.
+7. Clear seen history allows current matches to notify again.
+8. Close the window to save settings and stop the loop.
+
+## View menu
+
+| Item| Effect
+| --- | --- |
+| Criteria | Show or hide the left filter panel. When hidden, Results and Log use the full width.  
+| Results | Show or hide New matches (and the log host).
+| Log | Show or hide the log. When hidden, New matches uses the remaining height.
+| Show All | Turns every section back on.
+
+Drag the vertical splitter to resize Criteria. Drag the horizontal splitter to resize the log. Sizes are written to settings when you drag or close the window.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
