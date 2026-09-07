@@ -1,4 +1,6 @@
-# GitHubMonitor
+<img width="344" height="135" alt="layer-app-icon (1)" src="https://github.com/user-attachments/assets/834a39a7-1c47-4d4b-953f-d1385561148e" />
+
+
 GitHubMonitor is a Windows Presentation Foundation (WPF) application developed in C#. It continuously monitors GitHub for newly created repositories and provides real-time notifications. Users can define custom criteria to filter and display only the repositories that match their specified criteria. Click a toast or double-click a row to open the repo in the browser.
 
 <img width="1170" height="910" alt="image" src="https://github.com/user-attachments/assets/db556a68-1b48-4534-bed7-d0d444b8b568" />
