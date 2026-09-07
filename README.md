@@ -1,7 +1,7 @@
 # GitHubMonitor
 GitHubMonitor is a Windows Presentation Foundation (WPF) application developed in C#. It continuously monitors GitHub for newly created repositories and provides real-time notifications. Users can define custom criteria to filter and display only the repositories that match their specified criteria. Click a toast or double-click a row to open the repo in the browser.
 
-<img width="1190" height="920" alt="image" src="https://github.com/user-attachments/assets/db556a68-1b48-4534-bed7-d0d444b8b568" />
+<img width="1170" height="910" alt="image" src="https://github.com/user-attachments/assets/db556a68-1b48-4534-bed7-d0d444b8b568" />
 
 
 
@@ -10,6 +10,14 @@ GitHubMonitor is a Windows Presentation Foundation (WPF) application developed i
 
 Stack: .NET (Windows TFM), WPF, MVVM (`CommunityToolkit.Mvvm`), GitHub Search API, WinRT app notifications.
 
+## Table of Contents
+1. [Features](#features)
+1. [Requirements](#requirements)
+1. [Build and Run](#build-and-run)
+1. [How to Use](#how-to-use)
+1. [View Menu](#view-menu)
+1. [Criteria Mapped to GitHub Search](#criteria-mapped-to-github-search)
+1. [License](#license)
 
 ## Features
 
@@ -34,7 +42,7 @@ Stack: .NET (Windows TFM), WPF, MVVM (`CommunityToolkit.Mvvm`), GitHub Search AP
 
 Anonymous search is limited to **10 requests/minute**. A token raises that to **30 requests/minute**.
 
-## Build and run
+## Build and Run
 
 The project file must use a Windows 10 SDK TFM so toast APIs exist:
 
@@ -66,7 +74,7 @@ Do not set StartupUri in App.xaml. The window is created in App.OnStartup and as
 7. Clear seen history allows current matches to notify again.
 8. Close the window to save settings and stop the loop.
 
-## View menu
+## View Menu
 
 | Item| Effect
 | --- | --- |
@@ -77,7 +85,7 @@ Do not set StartupUri in App.xaml. The window is created in App.OnStartup and as
 
 Drag the vertical splitter to resize Criteria. Drag the horizontal splitter to resize the log. Sizes are written to settings when you drag or close the window.
 
-## Criteria mapped to GitHub search 
+## Criteria Mapped to GitHub search 
 
 | Field| Becomes
 | --- | --- |
@@ -112,6 +120,12 @@ If a toast does not appear:
 2. Open Settings → System → Notifications and allow banners for this app. The first toast registers the    AUMID <mark>GitHubNewRepoMonitor</mark>.
 3. Turn off Focus assist / Do not disturb while testing.
 4. Run the app as the logged-in user, not as LocalSystem.
+
+## License
+
+Copyright © Scott Cantwell
+
+GitHubMonitor is provided as-is under the Apache 2.0 license. For more information see LICENSE.
 
 
 
