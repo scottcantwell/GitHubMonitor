@@ -1,4 +1,4 @@
-﻿using GithubMonitor.Resources;
+﻿using GitHubMonitor.Resources;
 using System.IO;
 using System.Text.Json;
 

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GithubMonitor.Resources {
+namespace GitHubMonitor.Resources {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace GithubMonitor.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("GithubMonitor.Resources.Paths", typeof(Paths).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("GitHubMonitor.Resources.Paths", typeof(Paths).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

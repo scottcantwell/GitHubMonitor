@@ -1,4 +1,4 @@
-﻿using GithubMonitor.Resources;
+﻿using GitHubMonitor.Resources;
 using GitHubMonitor.Interfaces;
 using GitHubMonitor.Models;
 
