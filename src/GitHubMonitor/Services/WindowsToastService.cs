@@ -1,7 +1,9 @@
-﻿using GitHubMonitor.Interfaces;
+﻿using GithubMonitor.Resources;
+using GitHubMonitor.Interfaces;
 using GitHubMonitor.Models;
 using Windows.Data.Xml.Dom;
 using Windows.UI.Notifications;
+
 
 namespace GitHubMonitor.Services;
 
@@ -10,7 +12,8 @@ namespace GitHubMonitor.Services;
 /// </summary>
 public sealed class WindowsToastService : IToastService
 {
-    private const string AppId = "GitHubMonitor";
+    
+    private static readonly string AppId = General.AppId;
 
     /// <summary>
     /// Shows a toast notification for a new GitHub repository. The notification includes the repository's full name, description (if available),

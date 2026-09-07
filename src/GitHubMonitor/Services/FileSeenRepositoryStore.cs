@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using GithubMonitor.Resources;
+using System.IO;
 using System.Text.Json;
 
 namespace GitHubMonitor.Services;
@@ -21,9 +22,9 @@ public sealed class FileSeenRepositoryStore : ISeenRepositoryStore
     {
         var dir = Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-            "GitHubMonitor");
+            Paths.SEEN_FILE_DIRECTORY_NAME);
         Directory.CreateDirectory(dir);
-        _path = Path.Combine(dir, "seen.json");
+        _path = Path.Combine(dir, Paths.SEEN_STORE_FILENAME);
         _ids = File.Exists(_path)
             ? JsonSerializer.Deserialize<HashSet<long>>(File.ReadAllText(_path), Json) ?? new HashSet<long>()
             : new HashSet<long>();
