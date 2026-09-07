@@ -14,6 +14,9 @@ Stack: .NET (Windows TFM), WPF, MVVM (`CommunityToolkit.Mvvm`), GitHub Search AP
 1. [View Menu](#view-menu)
 1. [Criteria Mapped to GitHub Search](#criteria-mapped-to-github-search)
 1. [Toast Notifications](#toast-notifications)
+1. [Files](#files)
+1. [Project Layout](#project-layout)
+1. [Limits](#limits)
 1. [License](#license)
 
 ## Features
@@ -119,6 +122,15 @@ If a toast does not appear:
 
 ## Files
 
+Path: <mark>%LocalAppData%\GitHubMonitor\</mark>
+
+| File| Contents|
+| --- | --- |
+| settings.json | Criteria, token, poll interval, section visibility, splitter sizes |
+| seen.json | Repository IDs already processed |
+
+The token is stored in plain text. Use a revocable, minimally scoped PAT.
+
 ## Project Layout
 
 ```Text
@@ -140,8 +152,6 @@ Converters/InverseBoolConverter.cs
 * Query length is capped by GitHub.
 
 GitHub API terms apply to any token and traffic you generate.
-
-
 
 ## License
 
