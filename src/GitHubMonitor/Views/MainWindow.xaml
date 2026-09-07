@@ -15,7 +15,7 @@
     <DockPanel>
         <Menu DockPanel.Dock="Top" Height="30">
             <MenuItem Header="_File">
-                <MenuItem Header="_Quit"/>
+                <MenuItem Header="_Quit" Command="{Binding QuitCommand}"/>
             </MenuItem>
             <MenuItem Header="_View">
                 <MenuItem Header="_Criteria"
