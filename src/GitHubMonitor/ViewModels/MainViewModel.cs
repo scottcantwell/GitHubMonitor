@@ -94,6 +94,9 @@ public partial class MainViewModel : ObservableObject
     }
 
     [RelayCommand]
+    /// <summary>
+    /// Polls the GitHub repositories once asynchronously.
+    /// </summary>
     private async Task PollOnceAsync()
     {
         if (IsBusy) return;
@@ -112,6 +115,9 @@ public partial class MainViewModel : ObservableObject
     }
 
     [RelayCommand]
+    /// <summary>
+    /// Clears the seen repositories and the repository list, and logs the action.
+    /// </summary>
     private void ClearSeen()
     {
         _seen.Clear();
@@ -120,9 +126,15 @@ public partial class MainViewModel : ObservableObject
     }
 
     [RelayCommand]
+    /// <summary>
+    /// Clears the log lines.
+    ///</summary>   
     private void ClearLog() => LogLines.Clear();
 
     [RelayCommand]
+    /// <summary>
+    /// Opens the selected repository in the default web browser.
+    /// </summary>
     private void OpenSelected()
     {
         if (SelectedRepository is { } repo)

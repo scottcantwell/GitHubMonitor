@@ -26,6 +26,9 @@ public partial class MainWindow : Window
         };
     }
 
+    /// <summary>
+    /// Gets the current ViewModel associated with the MainWindow. Returns null if the DataContext is not of type MainViewModel.
+    /// </summary>
     private MainViewModel? Vm => DataContext as MainViewModel;
 
     /// <summary>
