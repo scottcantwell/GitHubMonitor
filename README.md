@@ -77,6 +77,46 @@ Do not set StartupUri in App.xaml. The window is created in App.OnStartup and as
 
 Drag the vertical splitter to resize Criteria. Drag the horizontal splitter to resize the log. Sizes are written to settings when you drag or close the window.
 
+## Criteria mapped to GitHub search 
+
+| Field| Becomes
+| --- | --- |
+|Keywords|Free text
+|Language|<mark>language:</mark>
+|Topic |<mark>topic:</mark>
+|User / Organization|<mark>user: / org:</mark>
+|Min stars|<mark>stars:>=N</mark>
+|Created within (hours)|<mark>created:>ISO-8601</mark>
+|Extra qualifiers|Raw, for example <mark>topic:mcp stars:10..50</mark>
+|Exclude forks / archived|<mark>fork:false archived:false</mark>
+
+* Examples:New C# repos in the last day: Language C#, Created within 24
+* Agent repos with traction: Keywords agent, Min stars 20
+
+## Toast Notifications
+Toasts use inbox WinRT APIs (<mark>Windows.UI.Notifications</mark>).
+
+```csharp
+
+ToastNotificationManager
+    .CreateToastNotifier("GitHubNewRepoMonitor")
+    .Show(toast);
+```
+
+
+The payload is <mark>ToastGeneric</mark> with <mark>activationType="protocol"</mark> and <mark>launch="https://github.com/..."</mark>.
+
+If a toast does not appear:
+
+1. Confirm the TFM is <mark>net*-windows10.0.19041.0</mark> (or another 10.0.17763+ SDK).
+2. Open Settings → System → Notifications and allow banners for this app. The first toast registers the    AUMID <mark>GitHubNewRepoMonitor</mark>.
+3. Turn off Focus assist / Do not disturb while testing.
+4. Run the app as the logged-in user, not as LocalSystem.
+
+
+
+
+
 
 
 
