@@ -1,3 +1,8 @@
 <Solution>
+  <Folder Name="/images/">
+    <File Path="../images/app_logo_large.png" />
+    <File Path="../images/app_logo_medium.png" />
+    <File Path="../images/GitHubMonitor.ico" />
+  </Folder>
   <Project Path="GitHubMonitor/GithubMonitor.csproj" DisplayName="GitHubMonitor" />
 </Solution>
