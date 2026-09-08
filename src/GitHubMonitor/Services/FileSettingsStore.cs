@@ -1,4 +1,5 @@
-﻿using GitHubMonitor.Interfaces;
+﻿using GitHubMonitor.Resources;
+using GitHubMonitor.Interfaces;
 using GitHubMonitor.Models;
 
 using System.IO;
@@ -21,12 +22,12 @@ public sealed class FileSettingsStore : ISettingsStore
     /// </summary>
     private static string Dir => Path.Combine(
         Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-        "GitHubMonitor");
+        Paths.SETTINGS_STORE_FILE_DIRECTORY_NAME);
 
     /// <summary>
     /// Gets the full file path for the settings file, which is named "settings.json" and located in the directory specified by <see cref="Dir"/>.
     /// </summary>
-    private static string PathFile => Path.Combine(Dir, "settings.json");
+    private static string PathFile => Path.Combine(Dir, Paths.SETTINGS_FILENAME);
 
     /// <summary>
     /// Loads the monitor settings from the JSON file. If the file does not exist, a new instance of <see cref="MonitorSettings"/> is returned.

@@ -64,7 +64,7 @@ public sealed class GitHubSearchService : IGitHubSearchService
         var url = $"search/repositories?q={Uri.EscapeDataString(BuildQuery(settings))}&sort=updated&order=desc&per_page={perPage}";
         using var response = await http.GetAsync(url, ct);
         if ((int)response.StatusCode == 403)
-            throw new InvalidOperationException("GitHub rate limit or auth failure. Add a personal access token.");
+            throw new InvalidOperationException(Resources.ErrorMessages.RATE_LIMIT_);
         response.EnsureSuccessStatusCode();
         var payload = await response.Content.ReadFromJsonAsync<SearchResponse>(JsonOptions, ct)
                       ?? new SearchResponse();

@@ -94,6 +94,9 @@ public partial class MainViewModel : ObservableObject
     }
 
     [RelayCommand]
+    /// <summary>
+    /// Polls the GitHub repositories once asynchronously.
+    /// </summary>
     private async Task PollOnceAsync()
     {
         if (IsBusy) return;
@@ -112,6 +115,9 @@ public partial class MainViewModel : ObservableObject
     }
 
     [RelayCommand]
+    /// <summary>
+    /// Clears the seen repositories and the repository list, and logs the action.
+    /// </summary>
     private void ClearSeen()
     {
         _seen.Clear();
@@ -120,9 +126,15 @@ public partial class MainViewModel : ObservableObject
     }
 
     [RelayCommand]
+    /// <summary>
+    /// Clears the log lines.
+    ///</summary>   
     private void ClearLog() => LogLines.Clear();
 
     [RelayCommand]
+    /// <summary>
+    /// Opens the selected repository in the default web browser.
+    /// </summary>
     private void OpenSelected()
     {
         if (SelectedRepository is { } repo)
@@ -130,6 +142,18 @@ public partial class MainViewModel : ObservableObject
     }
 
     [RelayCommand]
+    /// <summary>
+    /// Quits the application by shutting down the current App instance.
+    /// </summary>
+    private void Quit()
+    {
+        App.Current.Shutdown();
+    }
+
+    [RelayCommand]
+    /// <summary>
+    /// Shows all sections by setting their visibility properties to true.
+    /// </summary>
     private void ShowAllSections()
     {
         IsCriteriaVisible = true;
@@ -153,12 +177,19 @@ public partial class MainViewModel : ObservableObject
     }
 
     [RelayCommand]
+    /// <summary>
+    /// Handles the closing of the application by stopping the monitor and persisting settings.
+    /// </summary>
     private void Closing()
     {
         Stop();
         PersistSettings();
     }
 
+    /// <summary>
+    /// Starts the monitoring process by persisting settings, initializing a cancellation token, and running the polling loop asynchronously.
+    /// </summary>
+    /// <returns></returns>
     private async Task StartAsync()
     {
         PersistSettings();
@@ -171,6 +202,9 @@ public partial class MainViewModel : ObservableObject
         _ = Task.Run(() => RunLoopAsync(ct), ct);
     }
 
+    /// <summary>
+    /// Stops the monitoring process by canceling the cancellation token, resetting the running state, and updating the status text and log.
+    /// </summary>
     private void Stop()
     {
         _cts?.Cancel();
@@ -180,6 +214,11 @@ public partial class MainViewModel : ObservableObject
         Log("Stopped.");
     }
 
+    /// <summary>
+    /// Runs the main polling loop asynchronously, periodically checking for new repositories based on the current settings and notifying the user as appropriate.
+    /// </summary>
+    /// <param name="ct"></param>
+    /// <returns></returns>
     private async Task RunLoopAsync(CancellationToken ct)
     {
         try
@@ -206,6 +245,13 @@ public partial class MainViewModel : ObservableObject
         }
     }
 
+    /// <summary>
+    /// Polls GitHub for new repositories based on the current settings, updates the UI with the results, and optionally notifies the user of new repositories found.
+    /// </summary>
+    /// <param name="notify">Whether to notify the user of new repositories found.</param>
+    /// <param name="seedOnly">Whether to only seed the initial set of repositories without notifying.</param>
+    /// <param name="ct">The cancellation token to observe.</param>
+    /// <returns>A task that represents the asynchronous operation.</returns>
     private async Task PollAsync(bool notify, bool seedOnly, CancellationToken ct)
     {
         var settings = Snapshot();
@@ -239,6 +285,11 @@ public partial class MainViewModel : ObservableObject
         }
     }
 
+    /// <summary>
+    /// Creates a snapshot of the current settings in a thread-safe manner by invoking on the UI dispatcher. 
+    /// This snapshot is used for polling and other operations to ensure consistency of settings during asynchronous operations.
+    /// </summary>
+    /// <returns></returns>
     private MonitorSettings Snapshot() => App.Current.Dispatcher.Invoke(() => new MonitorSettings
     {
         Token = Token,
@@ -262,6 +313,11 @@ public partial class MainViewModel : ObservableObject
         LogHeight = LogHeight
     });
 
+    /// <summary>
+    /// Loads the settings from the provided <see cref="MonitorSettings"/> instance into the view model's properties. 
+    /// This method is used during initialization to restore previously saved settings.
+    /// </summary>
+    /// <param name="s"></param>
     private void LoadFrom(MonitorSettings s)
     {
         Token = s.Token;
@@ -285,8 +341,14 @@ public partial class MainViewModel : ObservableObject
         LogHeight = s.LogHeight;
     }
 
+    /// <summary>
+    /// Persists the current settings to the settings store.
+    /// </summary>
     private void PersistSettings() => _settingsStore.Save(Snapshot());
 
+    /// <summary>
+    /// Refreshes the query preview based on the current search criteria.
+    /// </summary>
     private void RefreshQueryPreview() => QueryPreview = _search.BuildQuery(new MonitorSettings
     {
         Keywords = Keywords,
@@ -301,6 +363,10 @@ public partial class MainViewModel : ObservableObject
         ExcludeArchived = ExcludeArchived
     });
 
+    /// <summary>
+    /// Logs a message to the log lines collection with a timestamp. This method ensures that the log is updated on the UI thread.
+    /// </summary>
+    /// <param name="message"></param>
     private void Log(string message)
     {
         void Add() => LogLines.Add($"[{DateTime.Now:HH:mm:ss}] {message}");

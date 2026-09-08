@@ -22,14 +22,14 @@ namespace GitHubMonitor.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resource1 {
+    internal class General {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resource1() {
+        internal General() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace GitHubMonitor.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("GithubMonitor.Resources.Resource1", typeof(Resource1).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("GitHubMonitor.Resources.General", typeof(General).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -63,36 +63,9 @@ namespace GitHubMonitor.Resources {
         /// <summary>
         ///   Looks up a localized string similar to GitHubMonitor.
         /// </summary>
-        internal static string SEEN_FILE_DIRECTORY_NAME {
+        internal static string AppId {
             get {
-                return ResourceManager.GetString("SEEN_FILE_DIRECTORY_NAME", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to seen.json.
-        /// </summary>
-        internal static string SEEN_STORE_FILENAME {
-            get {
-                return ResourceManager.GetString("SEEN_STORE_FILENAME", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to settings.json.
-        /// </summary>
-        internal static string SETTINGS_FILENAME {
-            get {
-                return ResourceManager.GetString("SETTINGS_FILENAME", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to GitHubMonitor.
-        /// </summary>
-        internal static string SETTINGS_STORE_FILE_DIRECTORY_NAME {
-            get {
-                return ResourceManager.GetString("SETTINGS_STORE_FILE_DIRECTORY_NAME", resourceCulture);
+                return ResourceManager.GetString("AppId", resourceCulture);
             }
         }
     }
